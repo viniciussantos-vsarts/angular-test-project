@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
   constructor(private readonly titleService: Title) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle('Angular');
+    this.titleService.setTitle('Home - Angular');
   }
 }
