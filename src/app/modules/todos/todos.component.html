@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-5">Todos</h1>
+    </div>
+    <div class="col-12">
+      <ng-container *ngIf="todos && todos.length > 0; else loading">
+        <ng-container
+          *ngFor="let item of todos | paginate: { id: 'todos', itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index">
+          <div class="card card-body mb-3">
+            <div class="row align-items-center justify-content-between">
+              <div class="col">{{ item?.title }}</div>
+              <div class="col-auto">
+                <button class="btn btn-sm"
+                  [ngClass]="{ 'btn-success': !item?.completed, 'btn-danger': item?.completed }">
+                  {{ item?.completed ? 'Undone' : 'Done' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <pagination-controls id="todos" (pageChange)="currentPage = $event"></pagination-controls>
+      </ng-container>
+      <ng-template #loading>
+        <p>Aguarde carregando...</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
